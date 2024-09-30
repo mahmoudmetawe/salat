@@ -47,3 +47,43 @@ function gettiming(countryName ,cityName ) {
         }); 
 }
 gettiming("EG","Cairo")
+
+async function cardes() {
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            document.getElementById("one").style.visibility = "visible"
+            resolve()
+        }, 1000);
+    })
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            document.getElementById("two").style.visibility = "visible"
+            resolve()
+        }, 500);
+    })
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            document.getElementById("three").style.visibility = "visible"
+            resolve()
+        }, 500);
+    })
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            document.getElementById("four").style.visibility = "visible"
+            resolve()
+        }, 500);
+    })
+    await new Promise((resolve, reject) => {
+        setTimeout(() => {
+            document.getElementById("five").style.visibility = "visible"
+            resolve()
+        }, 500);
+    })
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            document.getElementById("six").style.visibility = "visible"
+            resolve()
+        }, 500);
+    })
+}
+cardes()
