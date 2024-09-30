@@ -1,45 +1,48 @@
+let cities = ["القاهرة","مكة المكرمة","دبي","الكويت"]
+for (let city of cities){
+    let content = `
+    <option>${city}</option>
+    `
+    document.getElementById("country").innerHTML += content;
+}
 
-
-/*axios.get('http://api.aladhan.com/v1/timingsByCity?country=EG&city=Cairo')
-    .then(function (response) {
-        // handle success
-        const time = response.data.data.timings;
-        document.getElementById("a").innerHTML =time.Fajr
-        document.getElementById("c").innerHTML =time.Sunrise
-        document.getElementById("d").innerHTML =time.Dhuhr
-        document.getElementById("e").innerHTML =time.Asr
-        document.getElementById("b").innerHTML =time.Maghrib
-        document.getElementById("f").innerHTML =time.Isha
-        console.log(response.data.data.timings);
-    })
-    .catch(function (error) {
-        // handle error
-        console.log(error);
-    })
-    .finally(function () {
-        // always executed
-    });*/
-
-axios.get('http://api.aladhan.com/v1/timingsByCity', {
-    params: {
-        country:'EG',
-        city:'Cairo'
+document.getElementById("country").addEventListener("change", function() {
+    if (this.value == "القاهرة") {
+        gettiming("EG","Cairo")
+    }else if(this.value == "مكة المكرمة"){
+        gettiming("SA","Makkah al Mukarramah")
+    }else if (this.value == "دبي") {
+        gettiming("AE","Dubayy")
+    }else if (this.value == "الكويت"){
+        gettiming("kw" , "Al Kuwayt")
     }
 })
-    .then(function (response) {
-        const time = response.data.data.timings;
-        document.getElementById("a").innerHTML =time.Fajr
-        document.getElementById("c").innerHTML =time.Sunrise
-        document.getElementById("d").innerHTML =time.Dhuhr
-        document.getElementById("e").innerHTML =time.Asr
-        document.getElementById("b").innerHTML =time.Maghrib
-        document.getElementById("f").innerHTML =time.Isha
-        document.getElementById("day").innerHTML ="اليــــــــــوم : "+ response.data.data.date.hijri.weekday.ar
-        document.getElementById("date").innerHTML = "التــــــــــاريخ : "+response.data.data.date.readable
+
+
+function gettiming(countryName ,cityName ) {
+    axios.get('http://api.aladhan.com/v1/timingsByCity', {
+        params: {
+            country:countryName,
+            city:cityName
+        }
     })
-    .catch(function (error) {
-        alert(error);
-    })
-    .finally(function () {
-        // always executed
-    }); 
+        .then(function (response) {
+            const time = response.data.data.timings;
+            document.getElementById("a").innerHTML =time.Fajr
+            document.getElementById("c").innerHTML =time.Sunrise
+            document.getElementById("d").innerHTML =time.Dhuhr
+            document.getElementById("e").innerHTML =time.Asr
+            document.getElementById("b").innerHTML =time.Maghrib
+            document.getElementById("f").innerHTML =time.Isha
+            document.getElementById("day").innerHTML ="اليـــــــــــــــــــــــــوم : "+ response.data.data.date.hijri.weekday.ar
+            document.getElementById("date").innerHTML = " التاريخ الميلادي : "+response.data.data.date.readable
+            document.getElementById("dateh").innerHTML ="التاريخ الــــهجري : "+ response.data.data.date.hijri.date
+        })
+        .catch(function (error) {
+            alert(error);
+        })
+        .finally(function () {
+            // always executed
+        }); 
+}
+gettiming("EG","Cairo")
