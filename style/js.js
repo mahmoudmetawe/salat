@@ -29,10 +29,10 @@ function gettiming(countryName ,cityName ) {
         .then(function (response) {
             const time = response.data.data.timings;
             document.getElementById("a").innerHTML =time.Fajr
-            document.getElementById("c").innerHTML =time.Sunrise
-            document.getElementById("d").innerHTML =time.Dhuhr
-            document.getElementById("e").innerHTML =time.Asr
-            document.getElementById("b").innerHTML =time.Maghrib
+            document.getElementById("b").innerHTML =time.Sunrise
+            document.getElementById("c").innerHTML =time.Dhuhr
+            document.getElementById("d").innerHTML =time.Asr
+            document.getElementById("e").innerHTML =time.Maghrib
             document.getElementById("f").innerHTML =time.Isha
             document.getElementById("day").innerHTML ="اليـــــــــــــــــــــــــوم : "+ response.data.data.date.hijri.weekday.ar
             document.getElementById("date").innerHTML = " التاريخ الميلادي : "+response.data.data.date.readable
