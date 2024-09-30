@@ -1,3 +1,4 @@
+
 let cities = ["القاهرة","مكة المكرمة","دبي","الكويت"]
 for (let city of cities){
     let content = `
