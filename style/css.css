@@ -126,12 +126,12 @@ footer{
     margin: 10px 0;
     overflow: hidden;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     padding: 0  15px 10px 15px;
 }
 footer #country , footer #salat{
-    width: 300px;
+    width: 360px;
     border: 2px solid var(--subcolor);
     transition: 0.5s;
 }
